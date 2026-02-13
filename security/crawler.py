@@ -3,10 +3,6 @@ from __future__ import annotations
 from collections import deque
 from urllib.parse import parse_qs, urljoin, urlparse
 
-import requests
-from bs4 import BeautifulSoup
-
-
 MAX_DEPTH = 2
 TIMEOUT_SECONDS = 10
 
@@ -21,16 +17,10 @@ def _normalize_url(base_url: str, href: str) -> str:
 
 
 def discover_targets(base_url: str) -> dict:
-    """Crawl a target website and discover pages, forms, params, and endpoints.
+    """Crawl a target website and discover pages, forms, params, and endpoints."""
 
-    Returns:
-        {
-          "pages": [str],
-          "forms": [dict],
-          "params": [str],
-          "endpoints": [str]
-        }
-    """
+    import requests
+    from bs4 import BeautifulSoup
 
     parsed_base = urlparse(base_url)
     if not parsed_base.scheme:
@@ -66,11 +56,9 @@ def discover_targets(base_url: str) -> dict:
         pages.add(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Collect query parameters from current page URL
         page_params = parse_qs(urlparse(url).query)
         params.update(page_params.keys())
 
-        # Extract forms and form inputs
         for form in soup.find_all("form"):
             action = form.get("action") or url
             method = (form.get("method") or "GET").upper()
@@ -88,7 +76,6 @@ def discover_targets(base_url: str) -> dict:
             )
             endpoints.add(action_url)
 
-        # Follow internal links only
         for anchor in soup.find_all("a", href=True):
             normalized = _normalize_url(url, anchor["href"])
             if not _is_internal_link(base_netloc, normalized):
@@ -102,7 +89,6 @@ def discover_targets(base_url: str) -> dict:
             if clean_url not in visited and depth < MAX_DEPTH:
                 queue.append((clean_url, depth + 1))
 
-    # API-like endpoint heuristics
     for candidate in list(endpoints) + list(pages):
         path = urlparse(candidate).path.lower()
         if "/api" in path or path.endswith(".json"):

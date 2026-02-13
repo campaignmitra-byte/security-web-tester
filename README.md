@@ -1,6 +1,6 @@
 # Python CLI Website Security Scanner (High-Level Framework)
 
-This repository now includes a **high-level, extensible CLI framework** to crawl a website, discover attack surface, run automated web security tests, and produce a structured JSON report.
+This repository includes a **high-level, extensible CLI framework** to crawl a website, discover attack surface, run automated web security tests, and produce a structured JSON report.
 
 ## CLI Usage
 
@@ -8,9 +8,13 @@ This repository now includes a **high-level, extensible CLI framework** to crawl
 python -m security.scan https://example.com
 ```
 
-## Required Project Structure
+You can also pass a bare domain (scheme will be auto-added):
 
-The scanner is implemented exactly with the requested structure:
+```bash
+python -m security.scan example.com
+```
+
+## Required Project Structure
 
 - `security/crawler.py`
 - `security/scanner.py`
@@ -20,7 +24,7 @@ The scanner is implemented exactly with the requested structure:
 
 ## End-to-End Flow
 
-`scan.py` executes this pipeline:
+`scan.py` executes:
 
 1. URL input
 2. Crawl site
@@ -52,7 +56,7 @@ Crawler behavior:
 
 ## Security Tests Included
 
-`security/scanner.py` implements these automated checks as functions:
+`security/scanner.py` implements:
 
 - `test_sql_injection(url, params)`
 - `test_xss(url, params)`
@@ -62,12 +66,12 @@ Crawler behavior:
 - `test_auth_required_endpoint(url)`
 - `test_rate_limit(url)`
 
-Each function returns structured issues (test name, severity, url, evidence).
+Each test returns structured issues.
 
 ## Executor and Reporting
 
 - `run_security_tests(targets)` in `executor.py` runs all tests across discovered pages/endpoints.
-- `generate_report(...)` in `report.py` writes `security-report.json` with format:
+- `generate_report(...)` in `report.py` writes `security-report.json`:
 
 ```json
 {
@@ -88,25 +92,27 @@ Python 3.10+ is required.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install requests beautifulsoup4 pytest
+python -m pip install -e .
 ```
+
+## Troubleshooting
+
+- `python -m security.scan <url>` causes shell error because `<url>` is a placeholder. Use a real value.
+  - ✅ `python -m security.scan https://example.com`
+- `No module named security.scan` usually means you are not running from the project root or package is not installed in the active venv.
+  - Run from repo root and/or: `python -m pip install -e .`
+- Missing dependency message (`requests`, `bs4`):
+  - `python -m pip install requests beautifulsoup4`
 
 ## High-Level Framework Extension Guide
 
-Use this design as a framework, not a one-off script:
-
-1. **Add tests in `scanner.py`**
-   - Create new `test_*` functions that accept URL/params and return issue dictionaries.
-2. **Register tests in `executor.py`**
-   - Add your new test function call in `run_security_tests`.
-3. **Keep severities consistent**
-   - Use `high`, `medium`, `low` for report compatibility.
-4. **Refine discovery**
-   - Extend `crawler.py` heuristics for API docs, JS-routed paths, sitemap.xml, robots.txt parsing.
-5. **Automate in CI**
-   - Run `python -m security.scan <staging-url>` and archive `security-report.json`.
+1. Add new `test_*` functions in `scanner.py`.
+2. Register them in `executor.py` within `run_security_tests`.
+3. Keep severity values normalized (`high`, `medium`, `low`).
+4. Extend `crawler.py` discovery heuristics as needed.
+5. Run scanner in CI on staging and archive `security-report.json`.
 
 ## Notes
 
-- This scanner is a practical baseline for automated checks from multiple attacker viewpoints.
-- No scanner can guarantee detection of every future/unknown exploit; keep expanding test logic based on architecture changes and threat intel.
+- This scanner is a practical baseline from multiple attacker viewpoints.
+- No scanner guarantees all future unknown exploits; evolve tests with architecture and threat intel changes.

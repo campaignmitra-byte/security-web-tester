@@ -82,3 +82,10 @@ def test_run_security_tests_with_stubbed_scanner(monkeypatch):
     findings = executor.run_security_tests({"endpoints": ["https://example.com/api"], "pages": [], "params": ["id"]})
     assert len(findings) == 1
     assert findings[0]["test"] == "sql"
+
+
+def test_normalize_target_url():
+    from security.scan import normalize_target_url
+
+    assert normalize_target_url("example.com") == "https://example.com"
+    assert normalize_target_url("http://example.com") == "http://example.com"

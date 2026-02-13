@@ -3,8 +3,6 @@ from __future__ import annotations
 from typing import Any
 from urllib.parse import urlencode, urlparse, urlunparse
 
-import requests
-
 TIMEOUT_SECONDS = 10
 
 SQL_PAYLOAD = "' OR '1'='1"
@@ -29,6 +27,8 @@ def _issue(name: str, severity: str, url: str, evidence: str) -> dict[str, Any]:
 
 
 def test_sql_injection(url: str, params: list[str]) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     try:
         response = requests.get(url, params=_build_param_map(params, SQL_PAYLOAD), timeout=TIMEOUT_SECONDS)
@@ -49,6 +49,8 @@ def test_sql_injection(url: str, params: list[str]) -> list[dict]:
 
 
 def test_xss(url: str, params: list[str]) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     try:
         response = requests.get(url, params=_build_param_map(params, XSS_PAYLOAD), timeout=TIMEOUT_SECONDS)
@@ -60,6 +62,8 @@ def test_xss(url: str, params: list[str]) -> list[dict]:
 
 
 def test_open_redirect(url: str, params: list[str]) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     redirect_params = [p for p in params if p.lower() in {"next", "url", "redirect", "return", "return_to"}]
     if not redirect_params:
@@ -77,6 +81,8 @@ def test_open_redirect(url: str, params: list[str]) -> list[dict]:
 
 
 def test_security_headers(url: str) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     required_headers = [
         "Content-Security-Policy",
@@ -97,6 +103,8 @@ def test_security_headers(url: str) -> list[dict]:
 
 
 def test_directory_traversal(url: str, params: list[str]) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     candidate_params = [p for p in params if any(t in p.lower() for t in ["file", "path", "dir", "folder", "template"])]
     if not candidate_params:
@@ -113,6 +121,8 @@ def test_directory_traversal(url: str, params: list[str]) -> list[dict]:
 
 
 def test_auth_required_endpoint(url: str) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     try:
         response = requests.get(url, timeout=TIMEOUT_SECONDS, allow_redirects=False)
@@ -127,6 +137,8 @@ def test_auth_required_endpoint(url: str) -> list[dict]:
 
 
 def test_rate_limit(url: str) -> list[dict]:
+    import requests
+
     issues: list[dict] = []
     status_codes = []
     try:
