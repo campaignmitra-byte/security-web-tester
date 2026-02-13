@@ -1,0 +1,330 @@
+[
+  {
+    "attack_id": "AC-01",
+    "attack_name": "Broken object level authorization (IDOR)",
+    "stage": "integration",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AC-02",
+    "attack_name": "Broken function level authorization",
+    "stage": "integration",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AC-03",
+    "attack_name": "Mass assignment",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AC-04",
+    "attack_name": "Privilege escalation",
+    "stage": "integration",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-01",
+    "attack_name": "Credential stuffing",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-02",
+    "attack_name": "Brute force",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-03",
+    "attack_name": "Session fixation",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-04",
+    "attack_name": "Session replay",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-05",
+    "attack_name": "JWT/token tampering",
+    "stage": "integration",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AU-06",
+    "attack_name": "MFA bypass",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-01",
+    "attack_name": "SQL injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-02",
+    "attack_name": "NoSQL injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-03",
+    "attack_name": "Command injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-04",
+    "attack_name": "Server-side template injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-05",
+    "attack_name": "LDAP/XPath injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "IN-06",
+    "attack_name": "CRLF/header injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "XS-01",
+    "attack_name": "Reflected XSS",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "XS-02",
+    "attack_name": "Stored XSS",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "XS-03",
+    "attack_name": "DOM XSS",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "XS-04",
+    "attack_name": "CSRF",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "XS-05",
+    "attack_name": "Clickjacking",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "FD-01",
+    "attack_name": "Path traversal",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "FD-02",
+    "attack_name": "Unsafe file upload",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "FD-03",
+    "attack_name": "Insecure deserialization",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "FD-04",
+    "attack_name": "XXE",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "SV-01",
+    "attack_name": "SSRF",
+    "stage": "dast/fuzz",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "SV-02",
+    "attack_name": "Open redirect",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "SV-03",
+    "attack_name": "CORS misconfiguration",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "SV-04",
+    "attack_name": "HTTP request smuggling",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "SV-05",
+    "attack_name": "Host header injection",
+    "stage": "dast/fuzz",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "CR-01",
+    "attack_name": "Weak cryptography",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "CR-02",
+    "attack_name": "Sensitive data exposure",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "CR-03",
+    "attack_name": "Secrets in source/control plane",
+    "stage": "sast/sca",
+    "severity": "critical",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "CR-04",
+    "attack_name": "TLS misconfiguration",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AV-01",
+    "attack_name": "Rate-limit bypass",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AV-02",
+    "attack_name": "Application-level DoS",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "AV-03",
+    "attack_name": "Race condition",
+    "stage": "integration",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "OP-01",
+    "attack_name": "Vulnerable dependency",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "OP-02",
+    "attack_name": "Security misconfiguration",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "OP-03",
+    "attack_name": "Insufficient logging/monitoring",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  },
+  {
+    "attack_id": "OP-04",
+    "attack_name": "CI/CD artifact poisoning",
+    "stage": "sast/sca",
+    "severity": "high",
+    "release_blocker": true,
+    "example_test": "Define at least one automated test plus one manual adversarial scenario."
+  }
+]

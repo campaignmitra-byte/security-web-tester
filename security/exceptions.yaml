@@ -1,0 +1,3 @@
+# Temporary exceptions for High findings only.
+# Critical findings should not be waived.
+exceptions: []
